@@ -6,9 +6,7 @@ import com.projects.projectSpring.response.PatientResponse;
 import com.projects.projectSpring.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -22,7 +20,7 @@ public class PatientController {
     @Autowired
     PatientService patientService;
 
-
+    @PostMapping
     public ResponseEntity<PatientResponse> createPatient(
             @RequestBody @Valid PatientRequest patientRequest,
             UriComponentsBuilder uriComponentsBuilder){
@@ -34,6 +32,7 @@ public class PatientController {
     }
 
 
+    @GetMapping
     public Patient getPatient(){
         Patient patient = new Patient(UUID.randomUUID(),
                 "Rebeca", "rebecarodrigues", "Maria",
